@@ -86,7 +86,7 @@
                 const nonEmptyLines = lines.filter(line => line.trim() !== '');
                 contents = nonEmptyLines;
 
-                return nonEmptyLines;
+                init();
 
                 // // 随机选择一行
                 // const randomIndex = Math.floor(Math.random() * nonEmptyLines.length);
@@ -98,13 +98,14 @@
         }
 
         getRandomLineFromFile();
-        alert(contents);
+        
 
         globalIdx = 1;
         var startTime = null;
 
 
         function init() {
+            alert(contents);
             globalIdx = 1;
             const randomIndex = Math.floor(Math.random() * contents.length);
             const textToType = contents[randomIndex];
