@@ -65,8 +65,10 @@
     </style>
     <script>
         let contents = null;
-        // 定义一个异步函数来获取文件内容并处理
-        async function getRandomLineFromFile() {
+        globalIdx = 1;
+        var startTime = null;
+
+        async function initLoadData() {
             try {
                 // 使用 fetch API 获取文件内容
                 const response = await fetch('contents/1.txt');
@@ -86,7 +88,7 @@
                 const nonEmptyLines = lines.filter(line => line.trim() !== '');
                 contents = nonEmptyLines;
 
-                init();
+                restart();
 
                 // // 随机选择一行
                 // const randomIndex = Math.floor(Math.random() * nonEmptyLines.length);
@@ -97,14 +99,9 @@
             }
         }
 
-        getRandomLineFromFile();
-        
+        // initLoadData();
 
-        globalIdx = 1;
-        var startTime = null;
-
-
-        function init() {
+        function restart() {
             alert(contents);
             globalIdx = 1;
             const randomIndex = Math.floor(Math.random() * contents.length);
@@ -191,9 +188,9 @@
         <div id="typingArea">ERROR</div>
     </div>
     <div id="statusbar"></div>
-    <script>
+    <!-- <script>
         init();
-    </script>
-</body>
+    </script> -->
+</body onload="initLoadData()">
 
 </html>
